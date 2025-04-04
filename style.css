@@ -1,0 +1,491 @@
+@charset "UTF-8";
+/* Reset y estilos generales */
+:root {
+  --ColorAzul: #0C66E4;
+  --ColorTexto: #222a37;
+  --ColorFondoClaro: #ffffff;
+  --ColorFondoOscuro: #f4f3f3;
+  --header-height: 10vh;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  list-style: none;
+  outline: none;
+}
+
+body {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  color: var(--ColorTexto);
+  background-color: var(--ColorFondoClaro);
+}
+
+@media screen and (max-aspect-ratio: 4/5) {
+  h1 {
+    display: none;
+  }
+  body > header .perfil > label {
+    display: flex;
+  }
+  body > header > .perfil > label > img {
+    display: flex;
+  }
+  body > header .perfil > div {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.775);
+    top: 100%;
+    height: calc(100vh - var(--header-height));
+    width: 90vw;
+    right: -90vw;
+    flex-direction: column;
+    align-items: center;
+    transition: right ease 1s, opacity 1s ease;
+    opacity: 0;
+  }
+  body > header .perfil > div p {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    font-size: 4vh;
+    height: unset;
+    padding-top: 8vh;
+  }
+  body > header .perfil > div .imgPerfil {
+    height: 30%;
+    margin: 2vh;
+  }
+  body > header .perfil > div ul {
+    all: unset;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    align-items: flex-end;
+  }
+  body > header .perfil > label > input:checked {
+    display: flex;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    opacity: 0;
+  }
+  body > header header .perfil ul li:hover {
+    background-color: #ccc;
+  }
+  .perfil > div ul li {
+    width: 100%;
+    text-align: center;
+    border: 1px solid white;
+  }
+  .perfil:has(label > input:checked) > div {
+    right: 0;
+    opacity: 1;
+    transition: right ease 1s, opacity ease 0s;
+  }
+}
+.show-card {
+  animation: show-card 500ms ease normal backwards;
+}
+
+.hide-card {
+  animation: hide-card 500ms ease normal forwards;
+  animation-composition: add;
+}
+
+.show-note > div {
+  animation: show-note 0.5s ease 0.5s normal backwards;
+}
+
+.hide-note > div {
+  animation: hide-note 1s ease normal forwards;
+}
+
+.show-note {
+  animation: show-cont-note 1s ease normal backwards;
+}
+
+.hide-note {
+  animation: hide-cont-note 0.5s ease 0.5s normal forwards;
+}
+
+/* Animaciones */
+@keyframes hide-card {
+  from {
+    transform: rotateX(0deg) rotateY(0deg);
+  }
+  to {
+    transform: rotateX(90deg) rotateY(-90deg);
+  }
+}
+@keyframes show-card {
+  from {
+    transform: rotateX(90deg) rotateY(90deg);
+  }
+  to {
+    transform: rotateX(0deg) rotateY(0deg);
+  }
+}
+@keyframes show-note {
+  from {
+    transform: scale(0);
+    display: flex;
+  }
+  to {
+    transform: scale(1);
+  }
+}
+@keyframes show-cont-note {
+  from {
+    width: 0;
+    padding: 0;
+  }
+  to {
+    width: 35vh;
+    padding: 1rem;
+  }
+}
+@keyframes hide-note {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(0);
+    display: none;
+  }
+}
+@keyframes hide-cont-note {
+  from {
+    width: 35vh;
+    padding: 1rem;
+  }
+  to {
+    width: 0;
+    padding: 0;
+  }
+}
+header {
+  background-color: var(--ColorAzul);
+  display: flex;
+  position: fixed;
+  top: -10vh;
+  transition: top 0.3s ease;
+  justify-content: space-between;
+  align-items: center;
+  color: #fff;
+  width: 100%;
+  height: 10vh;
+  z-index: 1;
+}
+header .presentacion {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  margin: 0.4rem;
+}
+header .presentacion h1 {
+  font-size: 3rem;
+}
+header .presentacion img {
+  border-radius: 10px;
+  width: 3.5rem;
+}
+header .perfil {
+  display: flex;
+  position: absolute;
+  right: 0vw;
+  top: 0;
+  height: 100%;
+  padding: 1vh;
+}
+header .perfil:hover {
+  background-color: rgba(68, 149, 255, 0.9803921569);
+}
+header .perfil:hover > div > ul {
+  transform: translateY(0) scaleY(1);
+}
+header .perfil:hover.hide-list {
+  transform: translateY(-50%) scaleY(0);
+}
+header .perfil label {
+  height: 100%;
+}
+header .perfil label input {
+  display: none;
+}
+header .perfil label img {
+  display: none;
+}
+header .perfil > div {
+  display: flex;
+  height: 100%;
+}
+header .perfil > div .nombreUser {
+  width: 100%;
+  font-size: larger;
+  overflow-wrap: anywhere;
+  display: flex;
+  align-items: center;
+  margin-right: 1vh;
+  font-size: 1.2rem;
+}
+header .perfil > div .imgPerfil {
+  aspect-ratio: 1;
+  border-radius: 50%;
+  object-fit: cover;
+}
+header .perfil > div ul {
+  position: absolute;
+  top: 100%;
+  right: 0rem;
+  background-color: #fff;
+  color: var(--ColorTexto);
+  display: flex;
+  flex-direction: column;
+  border-radius: 5px 0px 5px 5px;
+  border: solid 1px var(--ColorTexto);
+  overflow: hidden;
+  transition: transform 0.3s ease;
+  transform: translateY(-50%) scaleY(0);
+}
+header .perfil > div ul li {
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+}
+header .perfil > div ul li:hover {
+  background-color: #ccc;
+  color: #fff;
+}
+
+main form {
+  display: none;
+  flex-direction: column;
+  gap: 10px;
+  background: #f4f3f3;
+  margin: 1.5rem;
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.35);
+  width: 60vh;
+}
+main form label {
+  width: 100%;
+}
+main form label input {
+  padding: 0.4rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 0.8rem;
+  background-color: #fff;
+  outline: none;
+  width: 100%;
+}
+main form label input:focus {
+  border-color: #fff;
+  box-shadow: 0 0 8px rgba(109, 109, 255, 0.4);
+}
+main form button {
+  padding: 0.6rem;
+  background-color: var(--ColorAzul);
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: 0.3s;
+}
+
+main .notaciones form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 5vh;
+  width: min(90%, 500px);
+  gap: 1rem;
+  background-color: var(--ColorFondoOscuro);
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.35);
+  padding: 1.5rem;
+  border-radius: 2rem;
+  margin-bottom: 5vh;
+}
+
+main {
+  width: 100%;
+  height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ColorTexto);
+}
+main .contenedor {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+main form.editarPerfil {
+  text-align: center;
+}
+main form.editarPerfil button {
+  margin-top: 1vh;
+}
+main form.editarPerfil button:hover {
+  background-color: #004aad;
+}
+main form.editarPerfil .imgPerfil {
+  object-fit: cover;
+  aspect-ratio: 1;
+  width: 80%;
+  align-self: center;
+  border-radius: 100%;
+}
+main form.editarPerfil .contenedor_BtnFoto button {
+  width: 49%;
+}
+main .notaciones {
+  background-color: var(--ColorFondoClaro);
+  display: none;
+  width: 100%;
+  height: 100%;
+  overflow-y: scroll;
+  margin-top: 20vh;
+  flex-direction: column;
+  align-items: center;
+}
+main .notaciones form input, main .notaciones form textarea {
+  width: 100%;
+  padding: 0.5rem;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  resize: vertical;
+}
+main .notaciones form button {
+  background-color: var(--ColorAzul);
+  font-size: 2vh;
+  max-width: 30vw;
+  padding: 0.5rem;
+  border-radius: 1vh;
+  border: none;
+  color: var(--ColorFondoOscuro);
+}
+main .notaciones .categoriaDeNotas {
+  display: grid;
+  width: 100%;
+  grid-template-columns: 2fr 1fr 2fr;
+  align-items: center;
+}
+main .notaciones .categoriaDeNotas select {
+  border: none;
+}
+main .notaciones .contenedorDeNotas {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap; /* Permite que las notas se envuelvan automáticamente */
+  align-items: start;
+  width: 100%;
+  padding: 0.5rem;
+  margin-top: 3rem;
+}
+main .notaciones .contenedorDeNotas .note {
+  padding: 1rem;
+  overflow: hidden;
+  width: 40vh; /* Evita que se hagan demasiado grandes */
+}
+main .notaciones .contenedorDeNotas .note .headerNote {
+  display: flex;
+  justify-content: space-between;
+  padding: 0;
+}
+main .notaciones .contenedorDeNotas .note .menuNote {
+  display: flex;
+  position: relative;
+  padding: 0.7vh;
+}
+main .notaciones .contenedorDeNotas .note .menuNote:hover {
+  background-color: #2d384a;
+}
+main .notaciones .contenedorDeNotas .note .menuNote ul {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  border-radius: 10px 0px 10px 10px;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+  transform: translateY(-50%) scaleY(0);
+  cursor: pointer;
+}
+main .notaciones .contenedorDeNotas .note .menuNote ul li {
+  border: none;
+  width: 100%;
+  padding: 1vh;
+  background-color: #fff;
+}
+main .notaciones .contenedorDeNotas .note .menuNote ul li:hover {
+  background-color: #ccc;
+}
+main .notaciones .contenedorDeNotas .note .menuNote:hover ul {
+  transform: translateY(0) scaleY(1);
+  color: #222a37;
+  width: 12vh;
+}
+main .notaciones .contenedorDeNotas .note .menuNote img {
+  width: 4vh;
+}
+main .notaciones .contenedorDeNotas .note strong {
+  font-size: 1.7rem;
+  align-self: flex-start;
+  overflow-wrap: anywhere;
+}
+main .notaciones .contenedorDeNotas .note p {
+  margin-top: 2vh;
+  margin-bottom: 2vh;
+  font-size: 2.4vh;
+  overflow-wrap: anywhere;
+  text-align: center;
+}
+main .notaciones .contenedorDeNotas .note > div {
+  background-color: var(--ColorTexto);
+  width: 100%;
+  padding: 1.5vh 1.5vh 4vh 1.5vh;
+  overflow: hidden;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-radius: 1rem;
+  gap: 0.7rem;
+  color: #fff;
+  transform: scale(1);
+}
+main .notaciones .contenedorDeNotas .note.ocultar {
+  padding: 0;
+  width: 0;
+}
+main .notaciones .contenedorDeNotas .note.ocultar > div {
+  transform: scale(0);
+  display: none;
+}
+main .notaciones .contenedorDeNotas .note option {
+  background-color: #222a37;
+}
+main .notaciones .contenedorDeNotas .note select, main .notaciones .categoriaDeNotas select {
+  background-color: transparent;
+  font-size: 1rem;
+  border: none;
+  align-self: flex-end;
+  width: 17vh;
+}
+
+/*# sourceMappingURL=style.css.map */

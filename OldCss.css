@@ -1,0 +1,541 @@
+:root {
+    --ColorAzul: #0C66E4;
+    --ColorTexto: #222a37;
+    --ColorFondoClaro: #ffffff;
+    --ColorFondoOscuro: #f4f3f3;
+    --header-height: 10vh;
+}
+
+/* Reset y estilos generales */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    list-style: none;
+    outline: none;
+}
+
+body {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    color: var(--ColorTexto);
+    background-color: var(--ColorFondoClaro);
+}
+
+/* Header */
+header {
+    background-color: var(--ColorAzul);
+    display: flex;
+    position: fixed;
+    top: -10vh;
+    transition: top 0.3s ease;
+    justify-content: space-between;
+    align-items: center;
+    color: #fff;
+    width: 100%;
+    height: 10vh;
+    z-index: 1;
+}
+
+header .presentacion {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+    margin: 0.4rem;
+}
+
+header .presentacion h1 {
+    font-size: 3rem;
+}
+
+header .presentacion img {
+    border-radius: 10px;
+    width: 3.5rem;
+}
+
+header .perfil {
+    display: flex;
+    position: absolute;
+    right: 0vw;
+    top: 0;
+    height: 100%;
+    padding: 1vh;
+}
+
+header .perfil .imgPerfil {
+    aspect-ratio: 1;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.perfil > label > input{
+    display: none;
+}
+
+header .perfil p{
+    width: 100%;
+    font-size: larger;
+    overflow-wrap: anywhere;
+    display: flex;
+    align-items: center;
+    margin-right: 1vh;
+}
+
+header .perfil label{
+    display: none;
+    height: 100%;
+}
+
+header .perfil div {
+    display: flex;
+    height: 100%;
+}
+
+header .perfil ul {
+    position: absolute;
+    top: 100%;
+    right: 0rem;
+    background-color: #fff;
+    color: var(--ColorTexto);
+    display: flex;
+    flex-direction: column;
+    border-radius: 5px 0px 5px 5px;
+    border: solid 1px var(--ColorTexto);
+    overflow: hidden;
+    transition: transform .3s ease;
+    transform: translateY(-50%) scaleY(0);
+}
+
+header .perfil:hover ul/* .notaciones .contenedorDeNotas .note .menuNote:hover ul*/ {
+    transform: translateY(0) scaleY(1);
+}
+
+header .perfil.hide-list ul/* .notaciones .contenedorDeNotas .note .menuNote.hide-list ul*/{
+    transform: translateY(-50%) scaleY(0);
+
+}
+
+header .perfil:hover {
+    background-color: #4495fffa;
+}
+
+header .perfil ul li {
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+header .perfil ul li:hover {
+    background-color: #ccc;
+    color: #fff;
+}
+
+/* Main */
+main {
+    width: 100%;
+    height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--ColorTexto);
+}
+
+.contenedor {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.contenedor form {
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+    background: #f4f3f3;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.35);
+    width: 100%;
+    max-width: 50vh;
+    /* width: 100%; */
+}
+
+.contenedor form input {
+    padding: 0.4rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    background-color: #fff;
+    outline: none;
+    width: 100%;
+}
+
+.contenedor form input:focus {
+    border-color: #fff;
+    box-shadow: 0 0 8px rgba(109, 109, 255, 0.4);
+}
+
+.contenedor form button {
+    padding: 0.6rem;
+    background-color: var(--ColorAzul);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: 0.3s;
+}
+
+.contenedor .editarPerfil{
+    text-align: center;
+}
+
+.contenedor .editarPerfil button{
+    margin-top: 2vh;
+}
+
+.contenedor .editarPerfil .imgPerfil{
+    object-fit: cover;
+    aspect-ratio: 1;
+    width: 80%;
+    align-self: center;
+    border-radius: 100%;
+}
+
+.contenedor .editarPerfil .contenedor_BtnFoto button {
+    width: 49%;
+}
+
+.contenedor form button:hover {
+    background-color: #004aad;
+}
+
+
+
+/* Notas */
+.notaciones {
+    background-color: var(--ColorFondoClaro);
+    display: none;
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll;
+    margin-top: 20vh;
+    flex-direction: column;
+    align-items: center;
+    /* padding: 0rem 8rem; */
+}
+
+.categoriaDeNotas{
+    display: grid;
+    width: 100%;
+    grid-template-columns: 2fr 1fr 2fr;
+    align-items: center;
+}
+
+.categoriaDeNotas select{
+    border: none;
+}
+
+.notaciones form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* margin: auto; */
+    margin-top: 5vh;
+    width: min(90%, 500px);
+    gap: 1rem;
+    background-color: var(--ColorFondoOscuro);
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.35);
+    padding: 1.5rem;
+    border-radius: 2rem;
+    margin-bottom: 5vh;
+}
+
+.notaciones form button{
+    background-color: var(--ColorAzul);
+    font-size: 2vh;
+    max-width: 30vw;
+    padding: .5rem ;
+    border-radius: 1vh;
+    border: none;
+    color: var(--ColorFondoOscuro);
+}
+
+.notaciones form input,
+.notaciones form textarea {
+    width: 100%;
+    padding: 0.5rem;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    resize: vertical;
+}
+
+.notaciones .contenedorDeNotas {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; /* Permite que las notas se envuelvan automáticamente */
+    align-items: start;
+    width: 100%;
+    padding: .5rem;
+    margin-top: 3rem;
+}
+
+.notaciones .contenedorDeNotas .note{
+    /* background-color: var(--ColorAzul); */
+    padding: 1rem;
+    overflow: hidden;
+    width: 40vh; /* Evita que se hagan demasiado grandes */
+
+}
+
+.notaciones .contenedorDeNotas .note.ocultar{
+    padding: 0;
+    width: 0;
+}
+
+.notaciones .contenedorDeNotas .note > div{
+    background-color: var(--ColorTexto);
+    width: 100%;
+    padding: 4vh 1.5vh;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 1rem;
+    gap: .7rem;
+    color: #fff;
+    transform: scale(1);
+}
+
+.contenedorDeNotas .note.ocultar > div{
+    transform: scale(0);
+    display: none;
+}
+
+.notaciones .contenedorDeNotas .note p {
+    font-size: 2.4vh;
+    overflow-wrap: anywhere;
+}
+
+.notaciones .contenedorDeNotas .note strong {
+    font-size: 1.7rem;
+    align-self: flex-start;
+    overflow-wrap: anywhere;
+}
+
+.notaciones .contenedorDeNotas .note select, .categoriaDeNotas select  {
+    background-color: transparent;
+    font-size: 1rem;
+    border: none;
+    align-self: flex-end;
+    width: 17vh;
+}
+
+.notaciones .contenedorDeNotas .note select option {
+    background-color: #222a37;
+}
+
+.notaciones .contenedorDeNotas .note .headerNote{
+    display: flex;
+    justify-content: space-between;
+    padding: 0;
+}
+
+.notaciones .contenedorDeNotas .note .menuNote{
+    display: flex;
+    position: relative;
+}
+.notaciones .contenedorDeNotas .note .menuNote:hover{
+    background-color: #2d384a;
+}
+
+.notaciones .contenedorDeNotas .note .menuNote ul{
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    overflow: hidden;
+    transition: transform .3s ease;
+    transform: translateY(-50%) scaleY(0);
+}
+
+.notaciones .contenedorDeNotas .note .menuNote ul li{
+    border: solid 1px #2d384a;
+    width: 100%;
+    padding: 1vh;
+}
+
+.notaciones .contenedorDeNotas .note .menuNote:hover ul{
+    display: flex;
+    background-color: #fff;
+    color: #222a37;
+    width: 20vh;
+}
+
+.notaciones .contenedorDeNotas .note .menuNote img{
+    width: 4vh;
+}
+
+.notaciones .contenedorDeNotas .note p{
+    margin-top: 3vh;
+}
+
+.show-card {
+    animation: show-card 500ms ease normal backwards;
+}
+
+.hide-card {
+    animation: hide-card 500ms ease normal forwards;
+    animation-composition: add;
+}
+
+.show-note > div{
+    animation: show-note 1s ease 1s normal backwards;
+}
+
+.hide-note > div{
+    animation: hide-note 1s ease normal forwards;
+}
+.show-note{
+    animation: show-cont-note 1s ease normal backwards;
+}
+
+.hide-note{
+    animation: hide-cont-note 1s ease 1s normal forwards;
+}
+
+/* Animaciones */
+@keyframes hide-card {
+    from {
+        transform: rotateX(0deg) rotateY(0deg);
+    }
+    to {
+        transform: rotateX(90deg) rotateY(-90deg);
+    }
+}
+
+@keyframes show-card {
+    from {
+        transform: rotateX(90deg) rotateY(90deg);
+    }
+    to {
+        transform: rotateX(0deg) rotateY(0deg);
+    }
+}
+
+@keyframes show-note {
+    from {
+        transform: scale(0);
+        display: flex;
+    }to{
+        transform: scale(1);
+    }
+}
+
+@keyframes show-cont-note {
+    from {
+        width: 0;
+        padding: 0;
+    }to{
+        width: 35vh;
+        padding: 1rem;
+    }
+}
+
+@keyframes hide-note {
+    from {
+        transform: scale(1);
+    }to{
+        transform: scale(0);
+        display: none;
+    }
+}
+
+@keyframes hide-cont-note {
+    from{
+        width: 35vh;
+        padding: 1rem;
+    }to{
+        width: 0;
+        padding: 0;
+    }
+}
+
+@media screen and (max-aspect-ratio: 4/5) {
+    h1{
+        display: none;
+    }
+    header .perfil > label{
+        display: flex;
+    }
+
+    header .perfil > div {
+        position: absolute;
+        background-color: rgba(0, 0, 0, 0.775);
+        top: 100%;
+        height: calc(100vh - var(--header-height));
+        width: 90vw;
+        right: -90vw;
+        flex-direction: column;
+        align-items: center;
+        transition: right ease 1s, opacity 1s ease;
+        opacity: 0;
+    }
+
+    .perfil > div p{
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        font-size: 4vh;
+        height: unset;
+        padding-top: 8vh;
+    }
+
+    .perfil > div .imgPerfil{
+        height: 30%;
+        margin: 2vh;
+    }
+
+    .perfil > div ul{
+        all: unset;
+        display: flex;
+        width: 100%;
+        height: 100%;
+        align-items: flex-end;
+    }
+    
+    .perfil > label > input:checked{
+        display: flex;
+        background-color: red;
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100vw;
+        height: 100vh;
+        opacity: 0;
+    }
+
+    header .perfil ul li:hover {
+        background-color: #7c7c7c;
+    }
+
+    .perfil > div ul li{
+        width: 100%;
+        text-align: center;
+        border: 1px solid white;
+    }
+
+    .perfil:has(label > input:checked) > div{
+        right: 0;
+        opacity: 1;
+        transition: right ease 1s, opacity ease 0s;
+    }
+
+}

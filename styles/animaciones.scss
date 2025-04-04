@@ -1,0 +1,82 @@
+@use "./responsive.scss";
+
+.show-card {
+    animation: show-card 500ms ease normal backwards;
+}
+
+.hide-card {
+    animation: hide-card 500ms ease normal forwards;
+    animation-composition: add;
+}
+
+.show-note > div{
+    animation: show-note .5s ease .5s normal backwards;
+}
+
+.hide-note > div{
+    animation: hide-note 1s ease normal forwards;
+}
+.show-note{
+    animation: show-cont-note 1s ease normal backwards;
+}
+
+.hide-note{
+    animation: hide-cont-note .5s ease .5s normal forwards;
+}
+
+/* Animaciones */
+@keyframes hide-card {
+    from {
+        transform: rotateX(0deg) rotateY(0deg);
+    }
+    to {
+        transform: rotateX(90deg) rotateY(-90deg);
+    }
+}
+
+@keyframes show-card {
+    from {
+        transform: rotateX(90deg) rotateY(90deg);
+    }
+    to {
+        transform: rotateX(0deg) rotateY(0deg);
+    }
+}
+
+@keyframes show-note {
+    from {
+        transform: scale(0);
+        display: flex;
+    }to{
+        transform: scale(1);
+    }
+}
+
+@keyframes show-cont-note {
+    from {
+        width: 0;
+        padding: 0;
+    }to{
+        width: 35vh;
+        padding: 1rem;
+    }
+}
+
+@keyframes hide-note {
+    from {
+        transform: scale(1);
+    }to{
+        transform: scale(0);
+        display: none;
+    }
+}
+
+@keyframes hide-cont-note {
+    from{
+        width: 35vh;
+        padding: 1rem;
+    }to{
+        width: 0;
+        padding: 0;
+    }
+}

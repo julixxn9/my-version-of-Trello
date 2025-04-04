@@ -1,0 +1,55 @@
+@use "./animaciones.scss";
+@use "./responsive.scss";
+
+%formulario {
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+    background: #f4f3f3;
+    margin: 1.5rem;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.35);
+    width: 60vh;
+    label{
+        width: 100%;
+        input {
+            padding: 0.4rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 0.8rem;
+            background-color: #fff;
+            outline: none;
+            width: 100%;
+            &:focus{
+                border-color: #fff;
+                box-shadow: 0 0 8px rgba(109, 109, 255, 0.4);   
+            }
+        }
+    }
+    button {
+        padding: 0.6rem;
+        background-color: var(--ColorAzul);
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 0.9rem;
+        transition: 0.3s;
+    }
+}
+
+%formularioNota{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 5vh;
+    width: min(90%, 500px);
+    gap: 1rem;
+    background-color: var(--ColorFondoOscuro);
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.35);
+    padding: 1.5rem;
+    border-radius: 2rem;
+    margin-bottom: 5vh;
+}

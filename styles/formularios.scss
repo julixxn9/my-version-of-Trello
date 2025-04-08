@@ -29,13 +29,16 @@
     }
     button {
         padding: 0.6rem;
-        background-color: var(--ColorAzul);
+        background-color: rgb(172, 172, 172);
         color: #fff;
         border: none;
         border-radius: 5px;
         cursor: pointer;
         font-size: 0.9rem;
         transition: 0.3s;
+        &:hover{
+            background-color: var(--ColorAzul);
+        }
     }
 }
 

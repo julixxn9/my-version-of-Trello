@@ -2,7 +2,7 @@
 import vista from "./utils/controlador.js";
 import elementos from "./utils/elementos.js";
 import { registrarUsuario, ingresarUsuario } from "./utils/sistema_usuarios.js";
-import { cambiarFoto, guardarFoto, cancelarFoto } from "./utils/sistema_foto.js";
+import { cambiarDatos, guardarFoto, cancelarFoto } from "./utils/sistema_foto.js";
 import { configuracion, linkLogin, salir, linkRegistro } from "./utils/rutas_vistas.js";
 import { formularioNotas, cambiarEstadoNota, filtrarNotas, cambiarNota } from "./utils/sistema_notas.js";
 // vista.asignarElementos(elementos);
@@ -16,7 +16,7 @@ window.addEventListener("resize", ()=>{
 })
 
 // Iniciar en la vista de login
-vista.actualizar_vista(0);
+vista.actualizar_vista(2);
 
 // Cambiar de vista entre registro e inicio de sesión
 elementos.linkRegister.addEventListener("click", linkLogin);
@@ -35,7 +35,7 @@ elementos.selectGrupNotes.addEventListener("change", filtrarNotas );
 elementos.login.addEventListener("submit", ingresarUsuario);
 
 // Evento para cambiar foto de perfil
-elementos.BtnCambiarFoto.addEventListener("click", cambiarFoto);
+elementos.BtnCambiarDatos.addEventListener("click", cambiarDatos);
 
 // Guardar la nueva foto en localStorage
 elementos.BtnGuardarFoto.addEventListener("click", guardarFoto);

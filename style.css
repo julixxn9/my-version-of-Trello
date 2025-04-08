@@ -256,13 +256,18 @@ header .perfil > div ul {
   transform: translateY(-50%) scaleY(0);
 }
 header .perfil > div ul li {
+  display: flex;
   padding: 0.8rem 1.5rem;
-  font-size: 1rem;
+  align-items: center;
+  gap: 0.2rem;
   cursor: pointer;
 }
 header .perfil > div ul li:hover {
   background-color: #ccc;
   color: #fff;
+}
+header .perfil > div ul li i {
+  font-size: medium;
 }
 
 main form {
@@ -294,13 +299,16 @@ main form label input:focus {
 }
 main form button {
   padding: 0.6rem;
-  background-color: var(--ColorAzul);
+  background-color: rgb(172, 172, 172);
   color: #fff;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   font-size: 0.9rem;
   transition: 0.3s;
+}
+main form button:hover {
+  background-color: var(--ColorAzul);
 }
 
 main .notaciones form {
@@ -349,6 +357,12 @@ main form.editarPerfil .imgPerfil {
   align-self: center;
   border-radius: 100%;
 }
+main form.editarPerfil .contenedor_BtnFoto :first-child:hover {
+  background-color: red;
+}
+main form.editarPerfil .contenedor_BtnFoto :last-child:hover {
+  background-color: #4CAF50;
+}
 main form.editarPerfil .contenedor_BtnFoto button {
   width: 49%;
 }
@@ -370,9 +384,8 @@ main .notaciones form input, main .notaciones form textarea {
   resize: vertical;
 }
 main .notaciones form button {
-  background-color: var(--ColorAzul);
   font-size: 2vh;
-  max-width: 30vw;
+  width: 27vw;
   padding: 0.5rem;
   border-radius: 1vh;
   border: none;
@@ -486,6 +499,36 @@ main .notaciones .contenedorDeNotas .note select, main .notaciones .categoriaDeN
   border: none;
   align-self: flex-end;
   width: 17vh;
+}
+main .modalDatos, main .modalNotas {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(128, 128, 128, 0.2);
+}
+main .modalDatos .editarForm, main .modalNotas .editarForm {
+  display: flex;
+}
+main .modalDatos .editarForm .cont-button, main .modalNotas .editarForm .cont-button {
+  display: flex;
+  justify-content: center;
+  gap: 2vh;
+  width: 100%;
+}
+main .modalDatos .editarForm .cont-button :first-child:hover, main .modalNotas .editarForm .cont-button :first-child:hover {
+  background-color: red;
+}
+main .modalDatos .editarForm .cont-button :last-child:hover, main .modalNotas .editarForm .cont-button :last-child:hover {
+  background-color: #4CAF50;
+}
+main .modalDatos .editarForm .cont-button button, main .modalNotas .editarForm .cont-button button {
+  width: 45%;
 }
 
 /*# sourceMappingURL=style.css.map */

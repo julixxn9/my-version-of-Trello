@@ -46,7 +46,7 @@ export function guardarFoto() {
     },500)
 }
 
-export function cambiarFoto() {
+export function cambiarDatos() {
     let urlFoto = prompt("Ingrese el enlace a la nueva foto");
     if (urlFoto == null) {
         return;

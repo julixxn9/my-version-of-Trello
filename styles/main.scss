@@ -33,8 +33,16 @@ main {
                 align-self: center;
                 border-radius: 100%;
             }
-            .contenedor_BtnFoto button {
-                width: 49%;
+            .contenedor_BtnFoto{
+                :first-child:hover{
+                    background-color: red;
+                }
+                :last-child:hover{
+                    background-color: #4CAF50;
+                }
+                button {
+                    width: 49%;
+                }
             }
         }
     }
@@ -57,9 +65,8 @@ main {
                 resize: vertical;
             }
             button{
-                background-color: var(--ColorAzul);
                 font-size: 2vh;
-                max-width: 30vw;
+                width: 27vw;
                 padding: .5rem ;
                 border-radius: 1vh;
                 border: none;
@@ -176,4 +183,35 @@ main {
             width: 17vh;
         }
     }
+    .modalDatos, .modalNotas{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        width: 100vw;
+        background-color: rgba(128, 128, 128, 0.2);
+        .editarForm{
+            display: flex;
+            .cont-button{
+                display: flex;
+                justify-content: center;
+                gap: 2vh;
+                width: 100%;
+                :first-child:hover{
+                    background-color: red;
+                }
+                :last-child:hover{
+                    background-color: #4CAF50;
+                }
+                button{
+                    width: 45%;
+                }
+            }
+        }
+    }
 }
+

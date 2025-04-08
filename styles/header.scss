@@ -93,12 +93,17 @@ header {
                 transform: translateY(-50%) scaleY(0);
 
                 li {
+                    display: flex;
                     padding: 0.8rem 1.5rem;
-                    font-size: 1rem;
+                    align-items: center;
+                    gap: .2rem;
                     cursor: pointer;
                     &:hover {
                         background-color: #ccc;
                         color: #fff;
+                    }
+                    i{
+                        font-size: medium;
                     }
                 }
             }

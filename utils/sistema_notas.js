@@ -179,6 +179,7 @@ export function cambiarEstadoNota(event) {
     selectDeLaNota.querySelector(`option:nth-child(${nuevoEstado})`).toggleAttribute("selected", true); 
 
     const evento_falso = new Event("change");
+    
     elementos.selectGrupNotes.dispatchEvent(evento_falso);
 }
 // el código directamente en el módulo sistema_notas.js porque el cambio de estado de las notas es parte lógica del manejo de las notas. Crear un módulo separado solo para cambiar estados sería innecesario, ya que el estado es una propiedad de las notas y debe estar junto con las funciones que crean, listan y manipulan las notas.

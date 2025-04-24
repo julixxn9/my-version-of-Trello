@@ -1,3 +1,5 @@
+
+
 class Plantilla {
     constructor() {
         this.id = this.generadorDeID(8);

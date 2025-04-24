@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +9,7 @@
     <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
+
 <body>
     <!-- header -->
     <header>
@@ -24,7 +26,9 @@
                 <p class="nombreUser">Nombre</p>
                 <img class="imgPerfil" id="imgPerfil" src="https://placehold.co/400" alt="Foto de perfil">
                 <ul>
-                    <li id="modeApp"> <p>Dark</p> <i class="bi bi-cloud-moon-fill"></i></li>
+                    <li id="modeApp">
+                        <p>Dark</p> <i class="bi bi-cloud-moon-fill"></i>
+                    </li>
                     <li id="headerConfiguration">Configuration</li>
                     <li id="headerExit">Exit</li>
                 </ul>
@@ -92,10 +96,11 @@
             <form id="editarPerfil" class="editarPerfil">
                 <h2 class="nombreUser">Nombre</h2>
                 <img class="imgPerfil" id="imgCambiar" src="https://placehold.co/400" alt="Profile picture">
+                <p class="errorP"></p>
                 <button id="btnCambiarDatos" type="button">Change!</button>
                 <div class="contenedor_BtnFoto">
-                    <button id="cancelarFoto" type="button">Cancel</button>
-                    <button id="guardarFoto" type="button">Save</button>
+                    <button id="cancelarDatos" type="button">Cancel</button>
+                    <button id="guardarDatos" type="button">Save</button>
                 </div>
             </form>
         </section>
@@ -112,15 +117,15 @@
                 <label for="descripcionNota">Note description
                     <textarea id="descripcionNota" required maxlength="200"></textarea>
                 </label>
-                <button id="agregarNotas">Add note</button>
+                <button type="submit" id="agregarNotas">Add note</button>
             </form>
             <div class="categoriaDeNotas">
                 <hr>
                 <select id="selectGrupNotes">
                     <option style="color: black;" value="0">All notes</option>
-                    <option style="color: orange;"  value="1">Earrings</option>
-                    <option style="color: red;"  value="2">Incomplete</option>
-                    <option style="color: greenyellow;"  value="3">Complete</option>
+                    <option style="color: orange;" value="1">Earrings</option>
+                    <option style="color: red;" value="2">Incomplete</option>
+                    <option style="color: greenyellow;" value="3">Complete</option>
                 </select>
                 <hr>
             </div>
@@ -128,49 +133,52 @@
             <div class="contenedorDeNotas" id="contenedorDeNotas"></div>
         </section>
 
-        <section class="modalDatos">
+        <section class="modalDatos modal-hidden">
+            <div class="con-modal">
             <form class="editarForm">
                 <div class="headerContenModal">
                     <h2>Change Data<i class="bi bi-arrow-down"></i></h2>
                 </div>
-            <label>
-                <span>Name</span>
-                <input type="text" required id="nombreEditarUser">
-            </label>
-            <label>
-                <span>Lastname</span>
-                <input type="text" required id="apellidoEditarUser">
-            </label>
-            <label>
-                <span>Age</span>
-                <input type="number" required id="edadEditarUser" max="80">
-            </label>
-            <label>
-                <span>Email</span>
-                <input type="email" required id="emailEditarUser">
-            </label>
-            <label>
-                <span>Old password</span>
-                <input type="password" required id="contraOldEditarUser" min="8" max="16">
-            </label>
-            <label>
-                <span>New password</span>
-                <input type="password" required id="contraNewEditarUser">
-            </label>
-            <label>
-                <span>Confirm new password</span>
-                <input type="password" required id="confirNeWEditarUser">
-            </label>
+                <label>
+                    <span>Name</span>
+                    <input type="text" required id="nombreEditarUser">
+                </label>
+                <label>
+                    <span>Lastname</span>
+                    <input type="text" required id="apellidoEditarUser">
+                </label>
+                <label>
+                    <span>Age</span>
+                    <input type="number" required id="edadEditarUser" max="80">
+                </label>
+                <label>
+                    <span>Email</span>
+                    <input type="email" required id="emailEditarUser">
+                </label>
+                <label>
+                    <span>Old password</span>
+                    <input type="password" required id="contraOldEditarUser" min="8" max="16">
+                </label>
+                <label>
+                    <span>New password</span>
+                    <input type="password" required id="contraNewEditarUser">
+                </label>
+                <label>
+                    <span>Confirm new password</span>
+                    <input type="password" required id="confirNeWEditarUser">
+                </label>
                 <p class="errorP"></p>
                 <div class="cont-button">
-                    <button type="button">Cancel</button>
+                    <button type="button" class="cancelarEditarUser">Cancel</button>
                     <button type="submit">Submit</button>
                 </div>
             </form>
+        </div>
         </section>
-        <section class="modalNotas"></section>
+        <!-- <section class="modalNotas"></section> -->
 
     </main>
     <script type="module" src="./index.js" defer></script>
 </body>
+
 </html>

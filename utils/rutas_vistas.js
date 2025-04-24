@@ -8,6 +8,11 @@ export function configuracion() {
     elementos.userName.textContent = usuario.actual.name;
     elementos.headerInputCheck.checked = false;
     elementos.header.querySelector(".perfil").classList.add("hide-list");
+
+    for (const clave in usuario.actual) {
+        usuario.temporal[clave] = usuario.actual[clave];
+      }      
+
     // elementos.divNotes.querySelector(".menuNote").classList.add("hide-list");
     setTimeout(() => {
         vista.actualizar_vista(2);

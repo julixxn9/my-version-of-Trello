@@ -29,7 +29,7 @@ main {
             .imgPerfil{
                 object-fit: cover;
                 aspect-ratio: 1;
-                width: 80%;
+                width: 60%;
                 align-self: center;
                 border-radius: 100%;
             }
@@ -193,9 +193,14 @@ main {
         left: 0;
         height: 100vh;
         width: 100vw;
-        background-color: rgba(128, 128, 128, 0.2);
+        background-color: rgba(113, 110, 110, 0.2);
+        transition:  transform .3s ease, backgraund-color .3s ease;
+        transform: scaleY(1);
         .editarForm{
+            visibility: visible;
             display: flex;
+            background-color: #fff;
+            z-index: 1;
             .cont-button{
                 display: flex;
                 justify-content: center;
@@ -210,6 +215,13 @@ main {
                 button{
                     width: 45%;
                 }
+            }
+        }
+    &.modal-hidden{
+        background-color: transparent;
+        visibility: hidden;
+            .editarForm{
+                transform: scaleY(0);
             }
         }
     }

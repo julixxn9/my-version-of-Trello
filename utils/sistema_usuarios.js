@@ -2,15 +2,15 @@ import elementos from "./elementos.js";
 import vista from "./controlador.js";
 import Usuario from "../classes/Usuario.js";
 
-export const usuario = { actual: {} }
+export const usuario = { actual: {}, temporal: {} }
 
-function mostrarError(input, mensaje, errorP) {
+export function mostrarError(input, mensaje, errorP) {
     input.style.border = "2px solid red";
     errorP.textContent = mensaje;
     errorP.style.visibility = "visible";
 }
 // Función para limpiar errores visuales 
-function limpiarError(input, errorP) {
+export function limpiarError(input, errorP) {
     input.style.border = "";
     errorP.textContent = "";
     errorP.style.visibility = "hidden";
@@ -32,7 +32,7 @@ export function registrarUsuario(event) {
         // fusionamos el arreglo existente con el nuevo de registro 
         baseUsuarios = baseUsuarios.concat(JSON.parse(baseUsuarioExiste));
         // buscamos en dicho arreglo si el usuario ya existe
-        const usuarioExistente = baseUsuarios.find((user) => user.correo == elementos.email.value);
+        const usuarioExistente = baseUsuarios.find((user) => user.correo.toLowerCase() == elementos.email.value.toLowerCase());
 
         // verificar si el correo ya existe
         if (usuarioExistente) {
@@ -53,7 +53,7 @@ export function registrarUsuario(event) {
         elementos.nombre.value.replaceAll("<", "&#60;").replaceAll(">", "&#62;"),
         elementos.apellido.value.replaceAll("<", "&#60;").replaceAll(">", "&#62;"),
         elementos.edad.value.replaceAll("<", "&#60;").replaceAll(">", "&#62;"),
-        elementos.email.value.replaceAll("<", "&#60;").replaceAll(">", "&#62;"),
+        elementos.email.value.toLowerCase().replaceAll("<", "&#60;").replaceAll(">", "&#62;"),
         elementos.contra.value.replaceAll("<", "&#60;").replaceAll(">", "&#62;"),
         "https://placehold.co/400"
     );
@@ -70,7 +70,7 @@ export function registrarUsuario(event) {
     alert(`Registro exitoso, Bienvenido ${elementos.nombre.value}!`);
 
     // ayudamos al usuario a que se loguee
-    elementos.emailInicio.value = usuarioGuardar.correo;
+    elementos.emailInicio.value = elementos.email.value;
     // limpiamos los campos para que el usuario pueda volver a registrarse y lo dejamos en el campo de inicio de sesión
 
     setTimeout(() => {
@@ -89,12 +89,12 @@ export function ingresarUsuario(event) {
     }
     limpiarError(elementos.emailInicio, elementos.errorPSesion);
 
-    let campoCorreo = elementos.emailInicio.value.replaceAll("<", "&#60;").replaceAll(">", "&#62;");
+    let campoCorreo = elementos.emailInicio.value.toLowerCase().replaceAll("<", "&#60;").replaceAll(">", "&#62;");
 
     // Convertir la cadena de JSON a un arreglo de objetos
     baseUsuarios = baseUsuarios.concat(JSON.parse(baseUsuarioExiste));
 
-    const usuarioExistente = baseUsuarios.find((user) => user.correo == campoCorreo);
+    const usuarioExistente = baseUsuarios.find((user) => user.correo.toLowerCase() == campoCorreo.toLowerCase());
 
     let campoContra = elementos.contraInicio.value.replaceAll("<", "&#60;").replaceAll(">", "&#62;");
 
@@ -113,13 +113,17 @@ export function ingresarUsuario(event) {
     alert("Inicio de sesión exitoso, bienvenido/a " + usuarioExistente.name.replaceAll("&#60", "<").replaceAll("&#62", ">"));
     usuario.actual = usuarioExistente;
     elementos.imgCambiaPerfil.src = usuario.actual.foto;
-
+    
     elementos.userName.textContent = usuario.actual.name.replaceAll("&#60", "<").replaceAll("&#62", ">") + " " + usuario.actual.lastName.replaceAll("&#60", "<").replaceAll("&#62", ">");
-
+    
     // ayudamos al usuario a que se loguee
     setTimeout(() => {
         elementos.login.reset();
         vista.actualizar_vista(2);
     }, 500);
+    
+        for (const clave in usuario.actual) {
+            usuario.temporal[clave] = usuario.actual[clave];
+          }      
 }
 

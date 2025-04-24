@@ -1,7 +1,5 @@
 import elementos from "./elementos.js";
-import vista from "./controlador.js";
 import { usuario } from "./sistema_usuarios.js";
-import { traerNota } from "./sistema_notas.js";
 
 export function cancelarFoto(){
     elementos.imgPhoto.src = usuario.actual.foto;
@@ -20,6 +18,7 @@ export function guardarFoto() {
 
     if(!baseUsuarioExiste){
         alert("error al acceder a la base de datos");
+        mostrarError(elementos.editarFoto, "error al acceder a la base de datos", elementos.errorPEditarPerfil);
         return;
     }
 
@@ -46,7 +45,7 @@ export function guardarFoto() {
     },500)
 }
 
-export function cambiarDatos() {
+export function cambiarFotos() {
     let urlFoto = prompt("Ingrese el enlace a la nueva foto");
     if (urlFoto == null) {
         return;
@@ -57,6 +56,7 @@ export function cambiarDatos() {
     
     fotoPrueba.onload = () => {
             elementos.imgCambiaPerfil.src = urlFoto;
+            usuario.temporal.foto = urlFoto;
         };
     fotoPrueba.onerror =
         () => {
@@ -65,8 +65,4 @@ export function cambiarDatos() {
         };
     
     fotoPrueba.src = urlFoto;
-
-    setTimeout(()=>{
-        traerNota(usuario.actual.correo)
-    },500)
 }

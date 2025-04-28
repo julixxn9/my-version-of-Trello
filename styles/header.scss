@@ -44,9 +44,11 @@ header {
             &>div>ul{
                 transform: translateY(0) scaleY(1);
             }
-        &.hide-list {
-            transform: translateY(-50%) scaleY(0);
         }
+        &.hide-list {
+            &>div>ul{
+                transform: translateY(-50%) scaleY(0);
+            }
         }
         label {
             height: 100%;
@@ -91,19 +93,15 @@ header {
                 overflow: hidden;
                 transition: transform 0.3s ease;
                 transform: translateY(-50%) scaleY(0);
-
                 li {
                     display: flex;
                     padding: 0.8rem 1.5rem;
                     align-items: center;
-                    gap: .2rem;
+                    justify-content: space-between;
                     cursor: pointer;
                     &:hover {
                         background-color: #ccc;
                         color: #fff;
-                    }
-                    i{
-                        font-size: medium;
                     }
                 }
             }

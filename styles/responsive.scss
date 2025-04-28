@@ -23,13 +23,15 @@
         opacity: 0;
     }
 
-    body > header .perfil > div p{
+    body > header .perfil > div li, body > header .perfil > div > p {
         text-align: center;
         display: flex;
+        align-items: center;
         justify-content: center;
-        font-size: 4vh;
+        font-size: 2vh;
         height: unset;
         padding-top: 8vh;
+        gap: 1vh;
     }
 
     body > header .perfil > div .imgPerfil{
@@ -37,9 +39,10 @@
         margin: 2vh;
     }
 
-    body > header .perfil > div ul{
+    body > header .perfil > div > ul{
         all: unset;
         display: flex;
+        justify-content: center;
         width: 100%;
         height: 100%;
         align-items: flex-end;

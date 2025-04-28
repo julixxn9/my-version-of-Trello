@@ -80,7 +80,7 @@ const elementos = {
     // Modal de edición de datos del usuario
     // -----------------------------
     modalEditarDatos: document.querySelector(".modalDatos"),
-    formModalDatos: document.querySelector(".editarForm"),
+    formModalDatos: document.querySelector(".modalDatos .editarForm"),
     nombreModificado: document.getElementById("nombreEditarUser"),
     apellidoModificado: document.getElementById("apellidoEditarUser"),
     edadModificado: document.getElementById("edadEditarUser"),
@@ -89,6 +89,16 @@ const elementos = {
     contraNewModificado: document.getElementById("contraNewEditarUser"),
     contraConfirmarModificado: document.getElementById("confirNeWEditarUser"),
     cancelarModificar: document.querySelector(".cancelarEditarUser"),
+
+    // -----------------------------
+    // Modal de edición de datos de las notas
+    // -----------------------------
+    modalEditarNotas: document.querySelector(".modalNotas"),
+    formModalEditarNotas: document.querySelector(".modalNotas .editarForm"),
+    tituloModificadoNotas: document.getElementById("tituloNotaEditada"),
+    descripcionDeNotaEditada: document.getElementById("descripcionDeNotaEditada"),
+    cancelarEditicionNota: document.getElementById("cancelarEditarNota"),
 }
+console.log(elementos)
 
 export default elementos;

@@ -4,7 +4,7 @@ import elementos from "./utils/elementos.js";
 import { registrarUsuario, ingresarUsuario } from "./utils/sistema_usuarios.js";
 import { cambiarFotos } from "./utils/sistema_foto.js";
 import { configuracion, linkLogin, salir, linkRegistro } from "./utils/rutas_vistas.js";
-import { formularioNotas, cambiarEstadoNota, filtrarNotas, cambiarNota } from "./utils/sistema_notas.js";
+import { formularioNotas, cambiarEstadoNota, filtrarNotas, cambiarNota, modificarNota, cancelarModificarNota } from "./utils/sistema_notas.js";
 import { guardarDatos, cancelarModificacion, cambiarDatos, cancelarCambios, aceptarEdicionUsuario } from "./utils/sistema_modificar.js";
 // vista.asignarElementos(elementos);
 
@@ -56,6 +56,10 @@ elementos.headerExit.addEventListener("click",salir);
 elementos.formNotas.addEventListener("submit",formularioNotas);
 
 elementos.grupoNotas.addEventListener("click", cambiarNota);
+
+elementos.formModalEditarNotas.addEventListener("submit", modificarNota);
+
+elementos.cancelarEditicionNota.addEventListener("click", cancelarModificarNota);
 // function actEliminarNotas(){
 //     elementos.grupoNotas.forEach(element => {
 //         element.addEventListener("click", eliminarNota);

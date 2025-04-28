@@ -6,10 +6,10 @@ import vista from "./controlador.js";
 export function formularioNotas(event) {
     event.preventDefault();
 
-    let descrip = elementos.textArea.value;
+    let descripcion = elementos.textArea.value;
     let titulo = elementos.inputTitulo.value;
 
-    if (titulo.replaceAll(" ", "") == "" || descrip.replaceAll(" ", "") == "") {
+    if (titulo.replaceAll(" ", "") == "" || descripcion.replaceAll(" ", "") == "") {
         alert(`Por favor, complete todos los campos ${usuario.actual.nombre}`);
         return;
     }
@@ -24,7 +24,7 @@ export function formularioNotas(event) {
     const nuevaNota = new Nota(
         // baseNotas.length,
         titulo.replaceAll("<", "&#60;").replaceAll(">", "&#62;"),
-        descrip.replaceAll("<", "&#60;",).replaceAll(">", "&#62;"),
+        descripcion.replaceAll("<", "&#60;",).replaceAll(">", "&#62;"),
         usuario.actual.correo
     );
     baseNotas.push(nuevaNota);
@@ -235,15 +235,11 @@ export function cambiarNota(event){
     }
 
     if(etiqueta.className == "btnModificate"){
-        modificarNota();
+        desplegueModificarNota(nota, idNota, indiceNotaExiste, baseNotas);
     }
     if(etiqueta.className == "btnDelete"){
         borrarNota( nota, idNota, indiceNotaExiste, baseNotas );
     }
-}
-
-function modificarNota(){
-    console.log("funciona sapo")
 }
 
 function borrarNota(elementoNota, idDeLaNota, posicionNota, baseNota){
@@ -285,4 +281,88 @@ function animarNotaEspecifica(cual, quiero_mostrar) {
             cual.className = "note ocultar";
         }, 1000);
     }
+}
+
+
+function desplegueModificarNota(elementoNota, idNota, posicionNota, baseNotas){
+
+    elementos.tituloModificadoNotas.value = baseNotas[posicionNota].titulo;
+    elementos.descripcionDeNotaEditada.value = baseNotas[posicionNota].descripcion;
+    elementos.modalEditarNotas.classList.remove("modal-hidden");
+    elementos.modalEditarNotas.classList.add(`nota${idNota}`)
+}
+
+export function modificarNota(event){
+    event.preventDefault();
+
+    const baseNotasExiste = localStorage.getItem("Notas");
+    const baseNotas = baseNotasExiste ? JSON.parse(baseNotasExiste) : [];
+
+    if(baseNotas.length == 0){ // CORREGIDO: el error era que tu condición estaba al revés
+        alert("Error al acceder a la base de datos");
+        return;
+    }
+
+    let idNota = "";
+
+    for (const clase of elementos.modalEditarNotas.classList){
+        if (clase.startsWith("nota")){
+            idNota = clase;
+            elementos.modalEditarNotas.classList.remove(clase);
+        }
+    }
+
+    const indiceNotaExiste = baseNotas.findIndex(not => not.id == idNota.replace("nota",""));
+
+    if(indiceNotaExiste == -1){
+        alert("La nota que quieres modificar no existe");
+        return;
+    }
+
+    // Guardamos los nuevos valores editados
+    baseNotas[indiceNotaExiste].titulo = elementos.tituloModificadoNotas.value;
+    baseNotas[indiceNotaExiste].descripcion = elementos.descripcionDeNotaEditada.value;
+
+    // Guardamos la base modificada
+    localStorage.setItem("Notas", JSON.stringify(baseNotas));
+
+    const htmlDeLaNota = document.getElementById(idNota);
+
+    elementos.modalEditarNotas.classList.add("modal-hidden");
+
+    setTimeout(() => {
+        elementos.formModalEditarNotas.reset();
+        
+        // 1. Ocultar la nota animadamente
+        animarNotaEspecifica(htmlDeLaNota, false);
+
+        setTimeout(() => {
+            // 2. Cambiar los campos de la nota (modificar el DOM)
+            const headerStrong = htmlDeLaNota.querySelector(".headerNote strong");
+            const parrafoDescripcion = htmlDeLaNota.querySelector(".descripcionNote");
+
+            headerStrong.textContent = baseNotas[indiceNotaExiste].titulo; 
+            parrafoDescripcion.textContent = baseNotas[indiceNotaExiste].descripcion;
+                // 3. Volver a mostrar la nota modificada
+                animarNotaEspecifica(htmlDeLaNota, true);
+        }, 1000);
+    }, 300);
+}
+
+
+export function cancelarModificarNota(){
+    elementos.modalEditarNotas.classList.add("modal-hidden");
+    elementos.modalEditarDatos.classList.remove()
+
+    let idNota = ""
+
+    for (const clave of elementos.modalEditarDatos.classList) {
+        if(clave.startsWith("nota")){ // quien empiece con la palabra nota, es para remover el id y todos los id que aparecen en los elementos comienza por "nota"
+            elementos.modalEditarDatos.classList.remove(clave)
+        }
+    }
+
+    setTimeout(() => {
+        elementos.formModalEditarNotas.reset()
+    }, 300);
 }

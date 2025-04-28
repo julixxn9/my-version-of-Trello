@@ -74,7 +74,8 @@ export function cancelarModificacion(){
 
     elementos.modalEditarDatos.classList.add("modal-hidden");
     setTimeout(() => {
-    elementos.formModalDatos.reset();
+      elementos.formModalDatos.reset();
+      traerNota(usuario.actual.correo);
     }, 300);
 }
 

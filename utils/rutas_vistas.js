@@ -17,7 +17,7 @@ export function configuracion() {
     setTimeout(() => {
         vista.actualizar_vista(2);
         elementos.grupoNotas.innerHTML = ""; // limpia las notas antes de recargar
-        traerNota(usuario.actual.correo); // recarga las notas desde el localStorage
+        // traerNota(usuario.actual.correo); // recarga las notas desde el localStorage
 
         setTimeout(()=>{
             elementos.header.querySelector(".perfil").classList.remove("hide-list");

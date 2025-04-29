@@ -92,6 +92,9 @@ body {
     opacity: 1;
     transition: right ease 1s, opacity ease 0s;
   }
+  body > main > .modalDatos .editarForm, body > main > .modalNotas .editarForm {
+    max-width: 80vw;
+  }
 }
 .show-card {
   animation: show-card 500ms ease normal backwards;

@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Trello</title>
+    <link rel="shortcut icon" href="/my-version-of-Trello/assets/trello-B8bT4OHN.svg" type="image/x-icon" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+  <script type="module" crossorigin src="/my-version-of-Trello/assets/index-Bu-cQRT5.js"></script>
+  <link rel="stylesheet" crossorigin href="/my-version-of-Trello/assets/index-6K-sdjUk.css">
+</head>
+
+<body>
+    <!-- header -->
+    <header>
+        <div class="presentacion">
+            <img src="/my-version-of-Trello/assets/images-V1KEUMpa.jpg" alt="Logo Trello" />
+            <h1>Trello</h1>
+        </div>
+        <div class="perfil">
+            <label>
+                <img src="data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20height='24px'%20viewBox='0%20-960%20960%20960'%20width='24px'%20fill='%23FFF'%3e%3cpath%20d='M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z'/%3e%3c/svg%3e" alt="" />
+                <input type="checkbox" />
+            </label>
+            <div>
+                <p class="nombreUser">Nombre</p>
+                <img class="imgPerfil" id="imgPerfil" src="https://placehold.co/400" alt="Foto de perfil" />
+                <ul>
+                    <li id="modeApp">
+                        <p>Dark</p>
+                        <i class="bi bi-cloud-moon-fill"></i>
+                    </li>
+                    <li id="headerConfiguration">Configuration</li>
+                    <li id="headerExit">Exit</li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <!-- Contenido principal -->
+    <main>
+        <!-- Sección de formularios -->
+        <section class="contenedor show-card" id="contenedor">
+            <!-- Formulario de inicio de sesión -->
+            <form id="login" class="login">
+                <h2>Log in here!</h2>
+                <label>
+                    <span>Email</span>
+                    <input type="email" required id="emailSesion" />
+                </label>
+                <label>
+                    <span>Password</span>
+                    <input type="password" required id="contraSesion" />
+                </label>
+                <button id="enviarLogin" type="submit">Login</button>
+                <p class="errorP"></p>
+                <a href="#" id="linkForRegister">Haven't you registered?</a>
+            </form>
+
+            <!-- Formulario de registro -->
+            <form id="registro" class="registro">
+                <div class="preRegristro">
+                    <h2>Register here <i class="bi bi-arrow-down"></i></h2>
+                </div>
+                <label>
+                    <span>Name</span>
+                    <input type="text" required id="nombreRegister" />
+                </label>
+                <label>
+                    <span>Lastname</span>
+                    <input type="text" required id="apellidoRegister" />
+                </label>
+                <label>
+                    <span>Age</span>
+                    <input type="number" required id="edadRegister" max="80" />
+                </label>
+                <label>
+                    <span>Email</span>
+                    <input type="email" required id="emailRegister" />
+                </label>
+                <label>
+                    <span>Password</span>
+                    <input type="password" required id="contraRegister" min="8" max="16" />
+                </label>
+                <label>
+                    <span>Confirm Password</span>
+                    <input type="password" required id="confirContraRegister" />
+                </label>
+                <button id="enviarRegistro" type="submit">Register</button>
+                <p class="errorP"></p>
+                <a href="#" id="linkForLogin">Already have an account?</a>
+            </form>
+
+            <!-- Formulario de edición de perfil -->
+            <form id="editarPerfil" class="editarPerfil">
+                <h2 class="nombreUser">Nombre</h2>
+                <img class="imgPerfil" id="imgCambiar" src="https://placehold.co/400" alt="Profile picture" />
+                <p class="errorP"></p>
+                <button id="btnCambiarDatos" type="button">Change!</button>
+                <div class="contenedor_BtnFoto">
+                    <button id="cancelarDatos" type="button">Cancel</button>
+                    <button id="guardarDatos" type="button">Save</button>
+                </div>
+            </form>
+        </section>
+
+        <!-- Sección de notas -->
+        <section class="notaciones" id="contenNotas">
+            <!-- Formulario para agregar notas -->
+            <form id="formularioNotas" class="formNotas show-card">
+                <h2>Add notes <i class="bi bi-arrow-down"></i></h2>
+                <label for="tituloNota">Note title
+                    <input type="text" id="tituloNota" required maxlength="16" />
+                </label>
+                <label for="descripcionNota">Note description
+                    <textarea id="descripcionNota" required maxlength="200"></textarea>
+                </label>
+                <button type="submit" id="agregarNotas">Add note</button>
+            </form>
+            <div class="categoriaDeNotas">
+                <hr />
+                <select id="selectGrupNotes">
+                    <option style="color: black" value="0">All notes</option>
+                    <option style="color: orange" value="1">Earrings</option>
+                    <option style="color: red" value="2">Incomplete</option>
+                    <option style="color: greenyellow" value="3">Complete</option>
+                </select>
+                <hr />
+            </div>
+            <!-- Contenedor de las notas -->
+            <div class="contenedorDeNotas" id="contenedorDeNotas"></div>
+        </section>
+
+        <section class="modalDatos modal-hidden">
+            <div class="con-modal">
+                <form class="editarForm">
+                    <div class="headerContenModal">
+                        <h2>Change Data<i class="bi bi-arrow-down"></i></h2>
+                    </div>
+                    <label>
+                        <span>Name</span>
+                        <input type="text" required id="nombreEditarUser" />
+                    </label>
+                    <label>
+                        <span>Lastname</span>
+                        <input type="text" required id="apellidoEditarUser" />
+                    </label>
+                    <label>
+                        <span>Age</span>
+                        <input type="number" required id="edadEditarUser" max="80" />
+                    </label>
+                    <label>
+                        <span>Email</span>
+                        <input type="email" required id="emailEditarUser" />
+                    </label>
+                    <label>
+                        <span>Old password</span>
+                        <input type="password" required id="contraOldEditarUser" min="8" max="16" />
+                    </label>
+                    <label>
+                        <span>New password</span>
+                        <input type="password" required id="contraNewEditarUser" />
+                    </label>
+                    <label>
+                        <span>Confirm new password</span>
+                        <input type="password" required id="confirNeWEditarUser" />
+                    </label>
+                    <p class="errorP"></p>
+                    <div class="cont-button">
+                        <button type="button" class="cancelarEditarUser">Cancel</button>
+                        <button type="submit">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+        <section class="modalNotas modal-hidden">
+            <div class="con-modal">
+                <form class="editarForm">
+                    <div class="headerContModal">
+                        <h2>Change Data</h2>
+                    </div>
+                    <label for="tituloNotaEditada">New note title
+                        <input type="text" id="tituloNotaEditada" required maxlength="16" />
+                    </label>
+                    <label for="descripcionDeNotaEditada">New note description
+                        <textarea id="descripcionDeNotaEditada" class="descripcionDeNotaEditada" required
+                            maxlength="200"></textarea>
+                    </label>
+                    <div class="cont-button">
+                        <button type="button" id="cancelarEditarNota">Cancel</button>
+                        <button type="submit" id="agregarNotaEditada">Update note</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+        <section class="modalImagen modal-hidden">
+            <div class="con-modal">
+                <form class="editarForm">
+                    <div class="headerContModal">
+                        <h2>Change profile photo</h2>
+                    </div>
+                    <button style="margin-bottom: 1vh; font-size: 17px;" id="btnCambiarFotoUrl" type="button">Photo url</button>
+                    <label for="inputCambiarFotoArchivo" class="btn-label" style="margin-bottom: 1vh; font-size: 17px;">Photo local</label>
+                    <input type="file" id="inputCambiarFotoArchivo" hidden accept="image/*">
+                    <p class="errorP"></p>
+                    <img src="/my-version-of-Trello/assets/images-V1KEUMpa.jpg" alt="Perfil">
+                    <div class="cont-button">
+                        <button id="btnCancelarCambiarFoto" type="button" >Cancel</button>
+                        <button type="submit" >Update photo</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+</body>
+
+</html>

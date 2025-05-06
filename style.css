@@ -284,6 +284,9 @@ main form {
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.35);
   width: 60vh;
 }
+main form h2 {
+  margin-bottom: 2vh;
+}
 main form label {
   width: 100%;
 }
@@ -300,7 +303,7 @@ main form label input:focus {
   border-color: #fff;
   box-shadow: 0 0 8px rgba(109, 109, 255, 0.4);
 }
-main form button {
+main form button, main form .btn-label {
   padding: 0.6rem;
   background-color: rgb(172, 172, 172);
   color: #fff;
@@ -309,8 +312,9 @@ main form button {
   cursor: pointer;
   font-size: 0.9rem;
   transition: 0.3s;
+  text-align: center;
 }
-main form button:hover {
+main form button:hover, main form .btn-label:hover {
   background-color: var(--ColorAzul);
 }
 
@@ -506,7 +510,8 @@ main .notaciones .categoriaDeNotas select {
   width: 17vh;
 }
 main .modalDatos,
-main .modalNotas {
+main .modalNotas,
+main .modalImagen {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -518,22 +523,38 @@ main .modalNotas {
   width: 100vw;
   transition: background-color 0.3s;
   background-color: rgba(0, 0, 0, 0.69);
+  z-index: 2;
 }
 main .modalDatos .con-modal,
-main .modalNotas .con-modal {
+main .modalNotas .con-modal,
+main .modalImagen .con-modal {
   transform: scaleY(1);
   transition: transform 0.3s ease;
 }
 main .modalDatos .editarForm,
-main .modalNotas .editarForm {
+main .modalNotas .editarForm,
+main .modalImagen .editarForm {
   visibility: visible;
   display: flex;
   background-color: #fff;
   z-index: 1;
   align-items: center;
 }
+main .modalDatos .editarForm img,
+main .modalNotas .editarForm img,
+main .modalImagen .editarForm img {
+  border-radius: 50%;
+  width: 40vh;
+  margin-bottom: 2vh;
+}
+main .modalDatos .editarForm button,
+main .modalNotas .editarForm button,
+main .modalImagen .editarForm button {
+  width: 100%;
+}
 main .modalDatos .editarForm .descripcionDeNotaEditada,
-main .modalNotas .editarForm .descripcionDeNotaEditada {
+main .modalNotas .editarForm .descripcionDeNotaEditada,
+main .modalImagen .editarForm .descripcionDeNotaEditada {
   width: 100%;
   padding: 0.5rem;
   border-radius: 5px;
@@ -541,32 +562,38 @@ main .modalNotas .editarForm .descripcionDeNotaEditada {
   resize: vertical;
 }
 main .modalDatos .editarForm .cont-button,
-main .modalNotas .editarForm .cont-button {
+main .modalNotas .editarForm .cont-button,
+main .modalImagen .editarForm .cont-button {
   display: flex;
   justify-content: center;
   gap: 2vh;
   width: 100%;
 }
 main .modalDatos .editarForm .cont-button :first-child:hover,
-main .modalNotas .editarForm .cont-button :first-child:hover {
+main .modalNotas .editarForm .cont-button :first-child:hover,
+main .modalImagen .editarForm .cont-button :first-child:hover {
   background-color: red;
 }
 main .modalDatos .editarForm .cont-button :last-child:hover,
-main .modalNotas .editarForm .cont-button :last-child:hover {
+main .modalNotas .editarForm .cont-button :last-child:hover,
+main .modalImagen .editarForm .cont-button :last-child:hover {
   background-color: #4caf50;
 }
 main .modalDatos .editarForm .cont-button button,
-main .modalNotas .editarForm .cont-button button {
+main .modalNotas .editarForm .cont-button button,
+main .modalImagen .editarForm .cont-button button {
   width: 45%;
 }
 main .modalDatos.modal-hidden,
-main .modalNotas.modal-hidden {
+main .modalNotas.modal-hidden,
+main .modalImagen.modal-hidden {
   transition: background-color 0.3s, visibility 0s 0.3s;
   background-color: transparent;
   visibility: hidden;
 }
 main .modalDatos.modal-hidden .con-modal,
-main .modalNotas.modal-hidden .con-modal {
+main .modalNotas.modal-hidden .con-modal,
+main .modalImagen.modal-hidden .con-modal {
   transform: scaleY(0);
 }
 

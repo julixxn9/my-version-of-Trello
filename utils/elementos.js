@@ -14,7 +14,6 @@ const elementos = {
     // -----------------------------
     emailInicio: document.getElementById("emailSesion"),
     contraInicio: document.getElementById("contraSesion"),
-
     // -----------------------------
     // Botones del login y registro
     // -----------------------------
@@ -55,6 +54,7 @@ const elementos = {
     errorPSesion: document.querySelector("#login .errorP"),
     errorPEditarPerfil: document.querySelector("#editarPerfil .errorP"),
     errorPModal: document.querySelector(".modalDatos .errorP"),
+    errorPModalEditarFoto: document.querySelector(".modalImagen .errorP"),
 
     // -----------------------------
     // Nombre de usuario mostrado
@@ -98,6 +98,17 @@ const elementos = {
     tituloModificadoNotas: document.getElementById("tituloNotaEditada"),
     descripcionDeNotaEditada: document.getElementById("descripcionDeNotaEditada"),
     cancelarEditicionNota: document.getElementById("cancelarEditarNota"),
+
+    // -----------------------------
+    // Modal de edición de datos de cambiar imagen imgPhoto
+    // -----------------------------
+    
+    modalFoto: document.querySelector(".modalImagen"),       
+    editarModalFoto: document.querySelector(".modalImagen .editarForm"),
+    btnCambiarFotoUrl: document.getElementById("btnCambiarFotoUrl"),
+    btnCambiarFotoArchivo: document.getElementById("inputCambiarFotoArchivo"),
+    imagenPreview: document.querySelector(".modalImagen .editarForm img"),
+    btnCancelarCambiarFoto: document.getElementById("btnCancelarCambiarFoto")
 }
 console.log(elementos)
 

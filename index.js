@@ -2,7 +2,7 @@
 import vista from "./utils/controlador.js";
 import elementos from "./utils/elementos.js";
 import { registrarUsuario, ingresarUsuario } from "./utils/sistema_usuarios.js";
-import { cambiarFotos } from "./utils/sistema_foto.js";
+import { cambiarFotoArchivo, cambiarFotosUrl, cancelarModificarFoto, modificarFotoTemporal  } from "./utils/sistema_foto.js";
 import { configuracion, linkLogin, salir, linkRegistro } from "./utils/rutas_vistas.js";
 import { formularioNotas, cambiarEstadoNota, filtrarNotas, cambiarNota, modificarNota, cancelarModificarNota } from "./utils/sistema_notas.js";
 import { guardarDatos, cancelarModificacion, cambiarDatos, cancelarCambios, aceptarEdicionUsuario } from "./utils/sistema_modificar.js";
@@ -21,6 +21,7 @@ vista.actualizar_vista(0);
 
 // Cambiar de vista entre registro e inicio de sesión
 elementos.linkRegister.addEventListener("click", linkLogin);
+
 elementos.linkSesion.addEventListener("click", linkRegistro);
 
 // Evento de registro
@@ -38,12 +39,16 @@ elementos.login.addEventListener("submit", ingresarUsuario);
 // Guardar la nueva foto en localStorage
 elementos.BtnGuardarDatos.addEventListener("click", guardarDatos);
 
-elementos.imgCambiaPerfil.addEventListener("click", cambiarFotos);
+elementos.imgCambiaPerfil.addEventListener("click", cambiarFotoArchivo);
 
 elementos.BtnCambiarDatos.addEventListener("click", cambiarDatos);
 
 // Cancelar cambio de foto
 elementos.BtnCancelarDatos.addEventListener("click", cancelarModificacion);
+
+// modificar foto
+
+elementos.editarModalFoto.addEventListener("submit", modificarFotoTemporal)
 
 elementos.formModalDatos.addEventListener("submit", aceptarEdicionUsuario);
 
@@ -60,7 +65,12 @@ elementos.grupoNotas.addEventListener("click", cambiarNota);
 elementos.formModalEditarNotas.addEventListener("submit", modificarNota);
 
 elementos.cancelarEditicionNota.addEventListener("click", cancelarModificarNota);
-// function actEliminarNotas(){
+
+elementos.btnCancelarCambiarFoto.addEventListener("click", cancelarModificarFoto);
+
+elementos.btnCambiarFotoUrl.addEventListener("click", cambiarFotosUrl)
+
+// function actEliminarNotas(){cambiarFotoTemporal
 //     elementos.grupoNotas.forEach(element => {
 //         element.addEventListener("click", eliminarNota);
 //     })

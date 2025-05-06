@@ -1,5 +1,6 @@
 import elementos from "./elementos.js";
 import { usuario } from "./sistema_usuarios.js";
+import extractFrom from "extract-uri-image";
 
 export function cancelarFoto(){
     elementos.imgPhoto.src = usuario.actual.foto;
@@ -45,24 +46,76 @@ export function guardarFoto() {
     },500)
 }
 
-export function cambiarFotos() {
-    let urlFoto = prompt("Ingrese el enlace a la nueva foto");
-    if (urlFoto == null) {
-        return;
-    }
-    
-    const fotoPrueba = new Image();
-    
-    
-    fotoPrueba.onload = () => {
-            elementos.imgCambiaPerfil.src = urlFoto;
-            usuario.temporal.foto = urlFoto;
-        };
-    fotoPrueba.onerror =
-        () => {
-            alert("Error al cargar la imagen");
-            return;
-        };
-    
-    fotoPrueba.src = urlFoto;
+export function cambiarFotoArchivo(){
+    elementos.imagenPreview.src = elementos.imgCambiaPerfil.src;
+    elementos.modalFoto.classList.remove("modal-hidden");
 }
+
+export function modificarFotoTemporal(event){
+    event.preventDefault();
+
+    // const baseUsuarioExiste = localStorage.getItem("Usuarios"); // 
+    // let baseUsuarios = [];
+
+    // if(!baseUsuarioExiste){
+    //     elementos.errorPModal.textContent = "Error al acceder a la base de datos";
+    //     return;
+    // };
+
+    // elementos.errorPModalEditarFoto.textContent = "";
+
+
+    // baseUsuarios = baseUsuarios.concat(JSON.parse(baseUsuarioExiste)); // concatenar la base de datos con la base de datos existente
+
+    // Guarda la imagen seleccionada en usuario.temporal.foto
+    usuario.temporal.foto = elementos.imagenPreview.src;
+
+    // Mostrar la imagen en la vista de edición
+    elementos.imgCambiaPerfil.src = usuario.temporal.foto;
+
+    // Cierra el modal
+    elementos.modalFoto.classList.add("modal-hidden");
+
+    alert("¡Se ha modificado la foto correctamente!");
+
+    setTimeout(() => {
+        elementos.editarModalFoto.reset();
+    }, 300);
+}
+
+export function cambiarFotosUrl() {
+
+    let nuevaFoto = prompt("Ingrese el enlace a la nueva foto");
+
+    if (nuevaFoto == null) {
+            return;
+        }
+        const fotoPrueba = new Image();
+        
+        fotoPrueba.onload = async () => {
+            try {
+                const resultado = await extractFrom.url(nuevaFoto);
+                elementos.imagenPreview.src = resultado;
+        
+            } catch (error) {
+                elementos.imagenPreview.src = error;
+                }
+            };
+        fotoPrueba.onerror =
+            () => {
+                alert("Error al cargar la imagen");
+                return;
+            };
+        
+        fotoPrueba.src = nuevaFoto;
+
+
+}
+
+export function cancelarModificarFoto(){
+    elementos.modalFoto.classList.add("modal-hidden");
+    setTimeout(() => {
+        elementos.imagenPreview.src = "https://placehold.co/400"
+    }, 500);
+}
+    

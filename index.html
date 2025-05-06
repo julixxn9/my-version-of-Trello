@@ -193,6 +193,24 @@
                 </form>
             </div>
         </section>
+        <section class="modalImagen modal-hidden">
+            <div class="con-modal">
+                <form class="editarForm">
+                    <div class="headerContModal">
+                        <h2>Change profile photo</h2>
+                    </div>
+                    <button style="margin-bottom: 1vh; font-size: 17px;" id="btnCambiarFotoUrl" type="button">Photo url</button>
+                    <label for="inputCambiarFotoArchivo" class="btn-label" style="margin-bottom: 1vh; font-size: 17px;">Photo local</label>
+                    <input type="file" id="inputCambiarFotoArchivo" hidden accept="image/*">
+                    <p class="errorP"></p>
+                    <img src="./img/images.jpg" alt="Perfil">
+                    <div class="cont-button">
+                        <button id="btnCancelarCambiarFoto" type="button" >Cancel</button>
+                        <button type="submit" >Update photo</button>
+                    </div>
+                </form>
+            </div>
+        </section>
     </main>
     <script type="module" src="./index.js" defer></script>
 </body>

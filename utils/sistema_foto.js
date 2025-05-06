@@ -1,6 +1,6 @@
 import elementos from "./elementos.js";
 import { usuario } from "./sistema_usuarios.js";
-import extractFrom from "extract-uri-image";
+import extractFrom from "../node_modules/extract-uri-image";
 
 export function cancelarFoto(){
     elementos.imgPhoto.src = usuario.actual.foto;

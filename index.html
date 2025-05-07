@@ -7,8 +7,8 @@
     <title>Trello</title>
     <link rel="shortcut icon" href="/my-version-of-Trello/assets/trello-B8bT4OHN.svg" type="image/x-icon" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
-  <script type="module" crossorigin src="/my-version-of-Trello/assets/index-Bu-cQRT5.js"></script>
-  <link rel="stylesheet" crossorigin href="/my-version-of-Trello/assets/index-6K-sdjUk.css">
+  <script type="module" crossorigin src="/my-version-of-Trello/assets/index-DrCY8iOl.js"></script>
+  <link rel="stylesheet" crossorigin href="/my-version-of-Trello/assets/index-B4zfT6IJ.css">
 </head>
 
 <body>
@@ -132,7 +132,7 @@
             <div class="contenedorDeNotas" id="contenedorDeNotas"></div>
         </section>
 
-        <section class="modalDatos modal-hidden">
+        <section class="modalDatos modal-hidden" id="#modalDatos">
             <div class="con-modal">
                 <form class="editarForm">
                     <div class="headerContenModal">
@@ -194,7 +194,7 @@
                 </form>
             </div>
         </section>
-        <section class="modalImagen modal-hidden">
+        <section class="modalImagen modal-hidden" id="modalImagen">
             <div class="con-modal">
                 <form class="editarForm">
                     <div class="headerContModal">
@@ -204,7 +204,7 @@
                     <label for="inputCambiarFotoArchivo" class="btn-label" style="margin-bottom: 1vh; font-size: 17px;">Photo local</label>
                     <input type="file" id="inputCambiarFotoArchivo" hidden accept="image/*">
                     <p class="errorP"></p>
-                    <img src="/my-version-of-Trello/assets/images-V1KEUMpa.jpg" alt="Perfil">
+                    <img style="border-radius: 10%;" src="/my-version-of-Trello/assets/images-V1KEUMpa.jpg" alt="Perfil">
                     <div class="cont-button">
                         <button id="btnCancelarCambiarFoto" type="button" >Cancel</button>
                         <button type="submit" >Update photo</button>
@@ -214,5 +214,4 @@
         </section>
     </main>
 </body>
-
 </html>

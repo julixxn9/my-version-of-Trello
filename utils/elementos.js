@@ -53,8 +53,8 @@ const elementos = {
     errorPRegistro: document.querySelector("#registro .errorP"),
     errorPSesion: document.querySelector("#login .errorP"),
     errorPEditarPerfil: document.querySelector("#editarPerfil .errorP"),
-    errorPModal: document.querySelector(".modalDatos .errorP"),
-    errorPModalEditarFoto: document.querySelector(".modalImagen .errorP"),
+    errorPModal: document.querySelector("#modalDatos .errorP"),
+    errorPModalEditarFoto: document.querySelector("#modalImagen .errorP"),
 
     // -----------------------------
     // Nombre de usuario mostrado

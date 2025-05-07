@@ -544,7 +544,7 @@ main .modalDatos .editarForm img,
 main .modalNotas .editarForm img,
 main .modalImagen .editarForm img {
   border-radius: 50%;
-  width: 40vh;
+  width: 60%;
   margin-bottom: 2vh;
 }
 main .modalDatos .editarForm button,

@@ -108,7 +108,7 @@ export function ingresarUsuario(event) {
         mostrarError(elementos.contraInicio, "Contraseña incorrecta.", elementos.errorPSesion);
         return;
     }
-    limpiarError(elementos.emailInicio, elementos.errorPSesion);
+    limpiarError(elementos.emailInicio, elementos.contraInicio);
 
     alert("Inicio de sesión exitoso, bienvenido/a " + usuarioExistente.name.replaceAll("&#60", "<").replaceAll("&#62", ">"));
     usuario.actual = usuarioExistente;

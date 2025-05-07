@@ -131,7 +131,7 @@
             <div class="contenedorDeNotas" id="contenedorDeNotas"></div>
         </section>
 
-        <section class="modalDatos modal-hidden">
+        <section class="modalDatos modal-hidden" id="#modalDatos">
             <div class="con-modal">
                 <form class="editarForm">
                     <div class="headerContenModal">
@@ -193,7 +193,7 @@
                 </form>
             </div>
         </section>
-        <section class="modalImagen modal-hidden">
+        <section class="modalImagen modal-hidden" id="modalImagen">
             <div class="con-modal">
                 <form class="editarForm">
                     <div class="headerContModal">
@@ -203,7 +203,7 @@
                     <label for="inputCambiarFotoArchivo" class="btn-label" style="margin-bottom: 1vh; font-size: 17px;">Photo local</label>
                     <input type="file" id="inputCambiarFotoArchivo" hidden accept="image/*">
                     <p class="errorP"></p>
-                    <img src="./img/images.jpg" alt="Perfil">
+                    <img style="border-radius: 10%;" src="./img/images.jpg" alt="Perfil">
                     <div class="cont-button">
                         <button id="btnCancelarCambiarFoto" type="button" >Cancel</button>
                         <button type="submit" >Update photo</button>
@@ -214,5 +214,4 @@
     </main>
     <script type="module" src="./index.js" defer></script>
 </body>
-
 </html>

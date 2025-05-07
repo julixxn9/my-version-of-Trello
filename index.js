@@ -2,7 +2,7 @@
 import vista from "./utils/controlador.js";
 import elementos from "./utils/elementos.js";
 import { registrarUsuario, ingresarUsuario } from "./utils/sistema_usuarios.js";
-import { cambiarFotoArchivo, cambiarFotosUrl, cancelarModificarFoto, modificarFotoTemporal  } from "./utils/sistema_foto.js";
+import { cambiarFotoArchivo, cambiarFotosUrl, cancelarModificarFoto, modificarFotoTemporal, cambiarFoto  } from "./utils/sistema_foto.js";
 import { configuracion, linkLogin, salir, linkRegistro } from "./utils/rutas_vistas.js";
 import { formularioNotas, cambiarEstadoNota, filtrarNotas, cambiarNota, modificarNota, cancelarModificarNota } from "./utils/sistema_notas.js";
 import { guardarDatos, cancelarModificacion, cambiarDatos, cancelarCambios, aceptarEdicionUsuario } from "./utils/sistema_modificar.js";
@@ -17,7 +17,7 @@ window.addEventListener("resize", ()=>{
 })
 
 // Iniciar en la vista de login
-vista.actualizar_vista(0);
+vista.actualizar_vista(2);
 
 // Cambiar de vista entre registro e inicio de sesión
 elementos.linkRegister.addEventListener("click", linkLogin);
@@ -39,14 +39,16 @@ elementos.login.addEventListener("submit", ingresarUsuario);
 // Guardar la nueva foto en localStorage
 elementos.BtnGuardarDatos.addEventListener("click", guardarDatos);
 
-elementos.imgCambiaPerfil.addEventListener("click", cambiarFotoArchivo);
+elementos.imgCambiaPerfil.addEventListener("click", cambiarFoto);
+
+elementos.btnCambiarFotoArchivo.addEventListener("change", cambiarFotoArchivo)
 
 elementos.BtnCambiarDatos.addEventListener("click", cambiarDatos);
 
 // Cancelar cambio de foto
 elementos.BtnCancelarDatos.addEventListener("click", cancelarModificacion);
 
-// modificar foto
+// modificar fotocambiarFotoArchivo
 
 elementos.editarModalFoto.addEventListener("submit", modificarFotoTemporal)
 

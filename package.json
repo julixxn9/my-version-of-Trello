@@ -1,8 +1,13 @@
 {
   "scripts": {
-    "dev": "vite"
+    "dev": "vite",
+    "build": "vite build",
+    "prebuild": "npm run build",
+    "deploy": "gh-pages -d dist",
+    "preview": "vite preview"
   },
   "devDependencies": {
+    "gh-pages": "^6.3.0",
     "sass": "^1.86.0"
   },
   "dependencies": {

@@ -1,6 +1,6 @@
 import elementos from "./elementos.js";
 import { usuario } from "./sistema_usuarios.js";
-import extractFrom from "../node_modules/extract-uri-image";
+import extractFrom from "extract-uri-image";
 
 export function cancelarFoto(){
     elementos.imgPhoto.src = usuario.actual.foto;
@@ -46,7 +46,22 @@ export function guardarFoto() {
     },500)
 }
 
-export function cambiarFotoArchivo(){
+export async function cambiarFotoArchivo(event){
+    const input = event.target
+
+    if(input.files[0] ===  undefined){
+        return;
+    }
+
+    try {
+        const resultado =  await extractFrom.input(input);
+        elementos.imagenPreview.src = resultado
+    } catch (error) {
+        elementos.imagenPreview.src = error
+    }
+}
+
+export function cambiarFoto(){
     elementos.imagenPreview.src = elementos.imgCambiaPerfil.src;
     elementos.modalFoto.classList.remove("modal-hidden");
 }
@@ -54,18 +69,27 @@ export function cambiarFotoArchivo(){
 export function modificarFotoTemporal(event){
     event.preventDefault();
 
-    // const baseUsuarioExiste = localStorage.getItem("Usuarios"); // 
-    // let baseUsuarios = [];
+    const baseUsuarioExiste = localStorage.getItem("Usuarios"); // 
+    let baseUsuarios = [];
 
-    // if(!baseUsuarioExiste){
-    //     elementos.errorPModal.textContent = "Error al acceder a la base de datos";
-    //     return;
-    // };
+    if(!baseUsuarioExiste){
+        elementos.errorPModal.textContent = "Error al acceder a la base de datos";
+        return;
+    };
 
-    // elementos.errorPModalEditarFoto.textContent = "";
+    elementos.errorPModalEditarFoto.textContent = "";
 
 
-    // baseUsuarios = baseUsuarios.concat(JSON.parse(baseUsuarioExiste)); // concatenar la base de datos con la base de datos existente
+    baseUsuarios = baseUsuarios.concat(JSON.parse(baseUsuarioExiste)); // concatenar la base de datos con la base de datos existente
+
+    const usuarioExistente = baseUsuarios.find(
+        usuarioBuscar => usuarioBuscar.correo.toLowerCase() == usuario.actual.correo.toLowerCase());
+
+    
+        if(!usuarioExistente){
+            elementos.errorPModal.textContent = "Error al actualizar la foto de perfil";
+            return;
+        }
 
     // Guarda la imagen seleccionada en usuario.temporal.foto
     usuario.temporal.foto = elementos.imagenPreview.src;
@@ -109,13 +133,13 @@ export function cambiarFotosUrl() {
         
         fotoPrueba.src = nuevaFoto;
 
-
 }
 
 export function cancelarModificarFoto(){
     elementos.modalFoto.classList.add("modal-hidden");
     setTimeout(() => {
         elementos.imagenPreview.src = "https://placehold.co/400"
+        elementos.editarModalFoto.reset()
     }, 500);
 }
     

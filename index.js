@@ -17,7 +17,7 @@ window.addEventListener("resize", ()=>{
 })
 
 // Iniciar en la vista de login
-vista.actualizar_vista(2);
+vista.actualizar_vista(0);
 
 // Cambiar de vista entre registro e inicio de sesión
 elementos.linkRegister.addEventListener("click", linkLogin);
